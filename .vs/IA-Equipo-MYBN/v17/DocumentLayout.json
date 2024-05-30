@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BF86C8FD-3634-4207-9155-F52B65ECAA81}|API\\API.csproj|c:\\users\\nexuz\\source\\repos\\ia-equipo-mybn\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF86C8FD-3634-4207-9155-F52B65ECAA81}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF86C8FD-3634-4207-9155-F52B65ECAA81}|API\\API.csproj|c:\\users\\nexuz\\source\\repos\\ia-equipo-mybn\\api\\controllers\\aiproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF86C8FD-3634-4207-9155-F52B65ECAA81}|API\\API.csproj|solutionrelative:api\\controllers\\aiproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AIProductController.cs",
+              "DocumentMoniker": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API\\Controllers\\AIProductController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\AIProductController.cs",
+              "ToolTip": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API\\Controllers\\AIProductController.cs",
+              "RelativeToolTip": "API\\Controllers\\AIProductController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T22:59:11.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T22:56:13.786Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
