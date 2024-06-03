@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.Service;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +13,7 @@ namespace API.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            AIProductService.GetProductInfo();
             return new string[] { "value1", "value2" };
         }
 
