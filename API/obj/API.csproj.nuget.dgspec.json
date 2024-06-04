@@ -4,6 +4,152 @@
     "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API\\API.csproj": {}
   },
   "projects": {
+    "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Model\\API.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Model\\API.Model.csproj",
+        "projectName": "API.Model",
+        "projectPath": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Model\\API.Model.csproj",
+        "packagesPath": "C:\\Users\\nexuz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nexuz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Repository\\API.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Repository\\API.Repository.csproj",
+        "projectName": "API.Repository",
+        "projectPath": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Repository\\API.Repository.csproj",
+        "packagesPath": "C:\\Users\\nexuz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nexuz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Model\\API.Model.csproj": {
+                "projectPath": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Model\\API.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Service\\API.Service.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -32,7 +178,14 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Model\\API.Model.csproj": {
+                "projectPath": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Model\\API.Model.csproj"
+              },
+              "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Repository\\API.Repository.csproj": {
+                "projectPath": "C:\\Users\\nexuz\\source\\repos\\IA-Equipo-MYBN\\API.Repository\\API.Repository.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

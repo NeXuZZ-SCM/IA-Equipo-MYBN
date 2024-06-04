@@ -62,3 +62,7 @@ C:\Users\nexuz\source\repos\IA-Equipo-MYBN\API\bin\Debug\net6.0\runtimes\win-x64
 C:\Users\nexuz\source\repos\IA-Equipo-MYBN\API\bin\Debug\net6.0\runtimes\win-x86\native\MatrixFactorizationNative.dll
 C:\Users\nexuz\source\repos\IA-Equipo-MYBN\API\bin\Debug\net6.0\API.Service.dll
 C:\Users\nexuz\source\repos\IA-Equipo-MYBN\API\bin\Debug\net6.0\API.Service.pdb
+C:\Users\nexuz\source\repos\IA-Equipo-MYBN\API\bin\Debug\net6.0\API.Model.dll
+C:\Users\nexuz\source\repos\IA-Equipo-MYBN\API\bin\Debug\net6.0\API.Repository.dll
+C:\Users\nexuz\source\repos\IA-Equipo-MYBN\API\bin\Debug\net6.0\API.Model.pdb
+C:\Users\nexuz\source\repos\IA-Equipo-MYBN\API\bin\Debug\net6.0\API.Repository.pdb

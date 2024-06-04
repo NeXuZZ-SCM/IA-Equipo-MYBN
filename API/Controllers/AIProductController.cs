@@ -1,4 +1,5 @@
-﻿using API.Service;
+﻿using API.Model;
+using API.Service;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,35 +12,54 @@ namespace API.Controllers
     {
         // GET: api/<AIProductController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public CopurchasePrediction Get(uint idProduct, uint idCoProduct)
         {
-            AIProductService.GetProductInfo();
-            return new string[] { "value1", "value2" };
+            return AIProductService.GetProductInfo(idProduct, idCoProduct);
         }
 
         // GET api/<AIProductController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ContentResult Get(int id)
         {
-            return "value";
+            string jsonResponse = @"[
+                                        {
+                                            ""id"": 1,
+                                            ""name"": ""Co-Producto A"",
+                                            ""score"": 6.99
+                                        },
+                                        {
+                                            ""id"": 2,
+                                            ""name"": ""Co-Producto B"",
+                                            ""score"": 5.1
+                                        },
+                                        {
+                                            ""id"": 3,
+                                            ""name"": ""Co-Producto C"",
+                                            ""score"": 4.8
+                                        }
+                                    ]";
+            return Content(jsonResponse, "application/json");
         }
 
-        // POST api/<AIProductController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        #region others
 
-        // PUT api/<AIProductController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// POST api/<AIProductController>
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        // DELETE api/<AIProductController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// PUT api/<AIProductController>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
+
+        //// DELETE api/<AIProductController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
+        #endregion
     }
 }

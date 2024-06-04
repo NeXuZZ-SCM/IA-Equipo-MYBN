@@ -10,8 +10,4 @@
     <PackageReference Include="Microsoft.ML" Version="3.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\API.Model\API.Model.csproj" />
-  </ItemGroup>
-
 </Project>

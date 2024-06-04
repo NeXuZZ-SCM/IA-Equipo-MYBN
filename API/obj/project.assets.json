@@ -515,10 +515,39 @@
           }
         }
       },
+      "API.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.ML": "3.0.1"
+        },
+        "compile": {
+          "bin/placeholder/API.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/API.Model.dll": {}
+        }
+      },
+      "API.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "API.Model": "1.0.0",
+          "Microsoft.ML": "3.0.1"
+        },
+        "compile": {
+          "bin/placeholder/API.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/API.Repository.dll": {}
+        }
+      },
       "API.Service/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "API.Model": "1.0.0",
+          "API.Repository": "1.0.0",
           "Microsoft.ML": "3.0.1",
           "Microsoft.ML.Recommender": "0.21.1"
         },
@@ -1696,6 +1725,16 @@
         "system.threading.tasks.4.3.0.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "API.Model/1.0.0": {
+      "type": "project",
+      "path": "../API.Model/API.Model.csproj",
+      "msbuildProject": "../API.Model/API.Model.csproj"
+    },
+    "API.Repository/1.0.0": {
+      "type": "project",
+      "path": "../API.Repository/API.Repository.csproj",
+      "msbuildProject": "../API.Repository/API.Repository.csproj"
     },
     "API.Service/1.0.0": {
       "type": "project",
