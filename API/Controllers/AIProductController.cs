@@ -18,9 +18,9 @@ namespace API.Controllers
         }
 
         [HttpGet("predict/co-product-form/")]
-        public CopurchasePrediction Get(uint idProduct, uint idCoProduct)
+        public async Task<CopurchasePrediction> Get(uint idProduct, uint idCoProduct)
         {
-            return _productService.GetProductInfo(idProduct, idCoProduct);
+            return await _productService.GetProductInfo(idProduct, idCoProduct);
         }
 
         [HttpGet("predict/co-products")]

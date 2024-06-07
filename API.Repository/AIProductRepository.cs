@@ -45,17 +45,34 @@ namespace API.Repository
             return await _context.ProductCoPurchases.ToListAsync();
         }
 
-        public IDataView GetProductInfo(MLContext mlContext, string trainingDataLocation)
+        public async Task<IDataView> GetProductInfo(MLContext mlContext, string trainingDataLocation)
         {
-            return mlContext.Data.LoadFromTextFile(path: trainingDataLocation,
-                                                      columns: new[]
-                                                      {
-                                                                    new TextLoader.Column("Label", DataKind.Single, 0),
-                                                          new TextLoader.Column(name:nameof(ProductEntry.ProductID), dataKind:DataKind.UInt32, source: new [] { new TextLoader.Range(0) }, keyCount: new KeyCount(262111)),
-                                                          new TextLoader.Column(name:nameof(ProductEntry.CoPurchaseProductID), dataKind:DataKind.UInt32, source: new [] { new TextLoader.Range(1) }, keyCount: new KeyCount(262111))
-                                                      },
-            hasHeader: true,
-                                                      separatorChar: '\t');
+            List<ProductEntry> products = await GetDataProduct();
+
+            // Convertir los datos a IDataView
+            IDataView dataView = mlContext.Data.LoadFromEnumerable(products);
+            return dataView;
+
+            //return mlContext.Data.LoadFromTextFile(path: trainingDataLocation,
+            //                                          columns: new[]
+            //                                          {
+            //                                                        new TextLoader.Column("Label", DataKind.Single, 0),
+            //                                              new TextLoader.Column(name:nameof(ProductEntry.ProductID), dataKind:DataKind.UInt32, source: new [] { new TextLoader.Range(0) }, keyCount: new KeyCount(262111)),
+            //                                              new TextLoader.Column(name:nameof(ProductEntry.CoPurchaseProductID), dataKind:DataKind.UInt32, source: new [] { new TextLoader.Range(1) }, keyCount: new KeyCount(262111))
+            //                                          },
+            //hasHeader: true,
+            //                                          separatorChar: '\t');
+        }
+
+        public async Task<List<ProductEntry>> GetDataProduct()
+        {
+            return await _context.ProductCoPurchases
+                                .Select(p => new ProductEntry
+                                {
+                                    //Label = p.Label,
+                                    ProductID = Convert.ToUInt32(p.ProductId),
+                                    CoPurchaseProductID = Convert.ToUInt32(p.CoPurchaseProductId)
+                                }).ToListAsync();
         }
     }
 }

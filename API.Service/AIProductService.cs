@@ -2,6 +2,7 @@
 using API.Repository;
 using Microsoft.ML;
 using Microsoft.ML.Trainers;
+using System.Threading.Tasks;
 
 namespace API.Service
 {
@@ -27,7 +28,7 @@ namespace API.Service
             _repository = repository;
         }
 
-        public CopurchasePrediction GetProductInfo(uint idProduct, uint idCoProduct)
+        public async Task<CopurchasePrediction> GetProductInfo(uint idProduct, uint idCoProduct)
         {
             //STEP 1: Create MLContext to be shared across the model creation workflow objects 
             MLContext mlContext = new MLContext();
@@ -35,7 +36,7 @@ namespace API.Service
             //STEP 2: Read the trained data using TextLoader by defining the schema for reading the product co-purchase dataset
             //        Do remember to replace amazon0302.txt with dataset from https://snap.stanford.edu/data/amazon0302.html
             //AIProductRepository aIProductRepository = new AIProductRepository();
-            IDataView traindata = _repository.GetProductInfo(mlContext, TrainingDataLocation);
+            var traindata = await _repository.GetProductInfo(mlContext, TrainingDataLocation);
 
             //STEP 3: Your data is already encoded so all you need to do is specify options for MatrxiFactorizationTrainer with a few extra hyperparameters
             //        LossFunction, Alpa, Lambda and a few others like K and C as shown below and call the trainer. 
