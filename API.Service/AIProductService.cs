@@ -68,12 +68,7 @@ namespace API.Service
                     CoPurchaseProductID = idCoProduct
                 });
 
-            Console.WriteLine("\n For ProductID = 5 and  CoPurchaseProductID = 63 the predicted score is " + Math.Round(prediction.Score, 1));
-            Console.WriteLine("=============== End of process, hit any key to finish ===============");
-            //Console.ReadKey();
-
             return prediction;
-
         }
 
 

@@ -9,6 +9,8 @@ namespace API.Model
 {
     public class ProductEntry
     {
+        public float Label { get; set; }
+
         [KeyType(count: 262111)]
         public uint ProductID { get; set; }
 

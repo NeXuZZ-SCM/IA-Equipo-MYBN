@@ -48,20 +48,7 @@ namespace API.Repository
         public async Task<IDataView> GetProductInfo(MLContext mlContext, string trainingDataLocation)
         {
             List<ProductEntry> products = await GetDataProduct();
-
-            // Convertir los datos a IDataView
-            IDataView dataView = mlContext.Data.LoadFromEnumerable(products);
-            return dataView;
-
-            //return mlContext.Data.LoadFromTextFile(path: trainingDataLocation,
-            //                                          columns: new[]
-            //                                          {
-            //                                                        new TextLoader.Column("Label", DataKind.Single, 0),
-            //                                              new TextLoader.Column(name:nameof(ProductEntry.ProductID), dataKind:DataKind.UInt32, source: new [] { new TextLoader.Range(0) }, keyCount: new KeyCount(262111)),
-            //                                              new TextLoader.Column(name:nameof(ProductEntry.CoPurchaseProductID), dataKind:DataKind.UInt32, source: new [] { new TextLoader.Range(1) }, keyCount: new KeyCount(262111))
-            //                                          },
-            //hasHeader: true,
-            //                                          separatorChar: '\t');
+            return mlContext.Data.LoadFromEnumerable(products);
         }
 
         public async Task<List<ProductEntry>> GetDataProduct()
@@ -69,7 +56,7 @@ namespace API.Repository
             return await _context.ProductCoPurchases
                                 .Select(p => new ProductEntry
                                 {
-                                    //Label = p.Label,
+                                    Label = 1.0f,
                                     ProductID = Convert.ToUInt32(p.ProductId),
                                     CoPurchaseProductID = Convert.ToUInt32(p.CoPurchaseProductId)
                                 }).ToListAsync();
