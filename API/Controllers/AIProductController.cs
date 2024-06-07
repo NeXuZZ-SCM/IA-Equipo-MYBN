@@ -58,25 +58,10 @@ namespace API.Controllers
             return await _productService.Crear(productCoPurchase);
         }
 
-        #region others
-
-        //// POST api/<AIProductController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/<AIProductController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<AIProductController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
-        #endregion
+        [HttpGet("TrainML")]
+        public async Task TrainML()
+        {
+            await _productService.TrainML();
+        }
     }
 }

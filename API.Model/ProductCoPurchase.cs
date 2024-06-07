@@ -1,4 +1,6 @@
-﻿namespace API.Model
+﻿using System.Text.Json.Serialization;
+
+namespace API.Model
 {
     /// <summary>
     /// Permite establecer la relacion entre la comprar de dos producto
@@ -7,6 +9,7 @@
     /// </summary>
     public class ProductCoPurchase
     {
+        //[JsonIgnore]
         public int Id { get; set; }
         public int ProductId { get; set; }
         public int CoPurchaseProductId { get; set; }

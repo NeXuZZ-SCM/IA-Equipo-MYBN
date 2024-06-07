@@ -45,7 +45,7 @@ namespace API.Repository
             return await _context.ProductCoPurchases.ToListAsync();
         }
 
-        public async Task<IDataView> GetProductInfo(MLContext mlContext, string trainingDataLocation)
+        public async Task<IDataView> GetProductInfo(MLContext mlContext)
         {
             List<ProductEntry> products = await GetDataProduct();
             return mlContext.Data.LoadFromEnumerable(products);
