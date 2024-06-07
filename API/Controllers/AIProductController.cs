@@ -10,16 +10,21 @@ namespace API.Controllers
     [ApiController]
     public class AIProductController : ControllerBase
     {
-        // GET: api/<AIProductController>
-        [HttpGet]
-        public CopurchasePrediction Get(uint idProduct, uint idCoProduct)
+        private readonly IAIProductService _productService;
+
+        public AIProductController(IAIProductService productService)
         {
-            return AIProductService.GetProductInfo(idProduct, idCoProduct);
+            _productService = productService;
         }
 
-        // GET api/<AIProductController>/5
-        [HttpGet("{id}")]
-        public ContentResult Get(int id)
+        [HttpGet("predict/co-product-form/")]
+        public CopurchasePrediction Get(uint idProduct, uint idCoProduct)
+        {
+            return _productService.GetProductInfo(idProduct, idCoProduct);
+        }
+
+        [HttpGet("predict/co-products")]
+        public ContentResult Get(int id, int count)
         {
             string jsonResponse = @"[
                                         {
@@ -39,6 +44,18 @@ namespace API.Controllers
                                         }
                                     ]";
             return Content(jsonResponse, "application/json");
+        }
+
+        [HttpGet]
+        public async Task<ProductCoPurchase?> GetById(int id)
+        {
+            return await _productService.GetById(id);
+        }
+
+        [HttpPost]
+        public async Task<ProductCoPurchase> Crear(ProductCoPurchase productCoPurchase)
+        {
+            return await _productService.Crear(productCoPurchase);
         }
 
         #region others

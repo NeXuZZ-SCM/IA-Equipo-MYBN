@@ -1,18 +1,11 @@
 ﻿using API.Model;
 using API.Repository;
 using Microsoft.ML;
-using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace API.Service
 {
-    public static class AIProductService
+    public class AIProductService : IAIProductService
     {
         //1. Do remember to replace amazon0302.txt with dataset from https://snap.stanford.edu/data/amazon0302.html
         //2. Replace column names with ProductID and CoPurchaseProductID. It should look like this:
@@ -27,15 +20,22 @@ namespace API.Service
         private static string ModelRelativePath = $"{BaseModelRelativePath}/model.zip";
         private static string ModelPath = GetAbsolutePath(ModelRelativePath);
 
-        public static CopurchasePrediction GetProductInfo(uint idProduct, uint idCoProduct)
+        private readonly AIProductRepository _repository;
+
+        public AIProductService(AIProductRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public CopurchasePrediction GetProductInfo(uint idProduct, uint idCoProduct)
         {
             //STEP 1: Create MLContext to be shared across the model creation workflow objects 
             MLContext mlContext = new MLContext();
 
             //STEP 2: Read the trained data using TextLoader by defining the schema for reading the product co-purchase dataset
             //        Do remember to replace amazon0302.txt with dataset from https://snap.stanford.edu/data/amazon0302.html
-            AIProductRepository aIProductRepository = new AIProductRepository();
-            IDataView traindata = aIProductRepository.GetProductInfo(mlContext, TrainingDataLocation);
+            //AIProductRepository aIProductRepository = new AIProductRepository();
+            IDataView traindata = _repository.GetProductInfo(mlContext, TrainingDataLocation);
 
             //STEP 3: Your data is already encoded so all you need to do is specify options for MatrxiFactorizationTrainer with a few extra hyperparameters
             //        LossFunction, Alpa, Lambda and a few others like K and C as shown below and call the trainer. 
@@ -88,5 +88,14 @@ namespace API.Service
             return fullPath;
         }
 
+        public async Task<ProductCoPurchase?> GetById(int id)
+        {
+            return await _repository.Get(id);
+        }
+
+        public async Task<ProductCoPurchase> Crear(ProductCoPurchase productCoPurchase)
+        {
+            return await _repository.Insert(productCoPurchase);
+        }
     }
 }
