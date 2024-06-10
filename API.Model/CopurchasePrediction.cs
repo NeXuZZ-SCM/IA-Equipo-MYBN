@@ -11,7 +11,7 @@ namespace API.Model
         public float Score { get; set; }
     }
 
-    public class CopurchasePrediction2
+    public class CopurchasePredictionRecommended
     {
         public float Id { get; set; }
         public float Score { get; set; }

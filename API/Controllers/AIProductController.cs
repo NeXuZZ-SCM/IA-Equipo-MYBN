@@ -23,45 +23,22 @@ namespace API.Controllers
             return await _productService.GetProductInfo(idProduct, idCoProduct);
         }
 
-        //[HttpGet("predict/co-products")]
-        //public ContentResult Get(int id, int count)
-        //{
-        //    string jsonResponse = @"[
-        //                                {
-        //                                    ""id"": 1,
-        //                                    ""name"": ""Co-Producto A"",
-        //                                    ""score"": 6.99
-        //                                },
-        //                                {
-        //                                    ""id"": 2,
-        //                                    ""name"": ""Co-Producto B"",
-        //                                    ""score"": 5.1
-        //                                },
-        //                                {
-        //                                    ""id"": 3,
-        //                                    ""name"": ""Co-Producto C"",
-        //                                    ""score"": 4.8
-        //                                }
-        //                            ]";
-        //    return Content(jsonResponse, "application/json");
-        //}
 
         [HttpGet("predict/co-products/GetRecommendedProducts")]
-        public async Task<List<CopurchasePrediction2>> GetRecommendedProducts(int id, int limit)
+        public async Task<List<CopurchasePredictionRecommended>> GetRecommendedProducts(int id, int limit)
         {
             if (limit is 0)
-            {
-                limit = 3;
-            }
+                limit = 1;
+
             IEnumerable<(float CoProductId, float Score)> response = await _productService.GetRecommendedProducts(id, limit);
 
-            List<CopurchasePrediction2> responseList = new List<CopurchasePrediction2>();
+            List<CopurchasePredictionRecommended> responseList = new List<CopurchasePredictionRecommended>();
             foreach (var responseItem in response)
             {
-                CopurchasePrediction2 copurchasePrediction2 = new CopurchasePrediction2();
-                copurchasePrediction2.Id = responseItem.CoProductId;
-                copurchasePrediction2.Score = responseItem.Score;
-                responseList.Add(copurchasePrediction2);
+                CopurchasePredictionRecommended CopurchasePredictionRecommended = new CopurchasePredictionRecommended();
+                CopurchasePredictionRecommended.Id = responseItem.CoProductId;
+                CopurchasePredictionRecommended.Score = responseItem.Score;
+                responseList.Add(CopurchasePredictionRecommended);
             }
 
             return responseList;
