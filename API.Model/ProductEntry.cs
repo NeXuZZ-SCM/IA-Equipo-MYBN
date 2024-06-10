@@ -17,4 +17,5 @@ namespace API.Model
         [KeyType(count: 262111)]
         public uint CoPurchaseProductID { get; set; }
     }
+
 }

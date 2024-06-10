@@ -23,28 +23,50 @@ namespace API.Controllers
             return await _productService.GetProductInfo(idProduct, idCoProduct);
         }
 
-        [HttpGet("predict/co-products")]
-        public ContentResult Get(int id, int count)
+        //[HttpGet("predict/co-products")]
+        //public ContentResult Get(int id, int count)
+        //{
+        //    string jsonResponse = @"[
+        //                                {
+        //                                    ""id"": 1,
+        //                                    ""name"": ""Co-Producto A"",
+        //                                    ""score"": 6.99
+        //                                },
+        //                                {
+        //                                    ""id"": 2,
+        //                                    ""name"": ""Co-Producto B"",
+        //                                    ""score"": 5.1
+        //                                },
+        //                                {
+        //                                    ""id"": 3,
+        //                                    ""name"": ""Co-Producto C"",
+        //                                    ""score"": 4.8
+        //                                }
+        //                            ]";
+        //    return Content(jsonResponse, "application/json");
+        //}
+
+        [HttpGet("predict/co-products/GetRecommendedProducts")]
+        public async Task<List<CopurchasePrediction2>> GetRecommendedProducts(int id, int limit)
         {
-            string jsonResponse = @"[
-                                        {
-                                            ""id"": 1,
-                                            ""name"": ""Co-Producto A"",
-                                            ""score"": 6.99
-                                        },
-                                        {
-                                            ""id"": 2,
-                                            ""name"": ""Co-Producto B"",
-                                            ""score"": 5.1
-                                        },
-                                        {
-                                            ""id"": 3,
-                                            ""name"": ""Co-Producto C"",
-                                            ""score"": 4.8
-                                        }
-                                    ]";
-            return Content(jsonResponse, "application/json");
+            if (limit is 0)
+            {
+                limit = 3;
+            }
+            IEnumerable<(float CoProductId, float Score)> response = await _productService.GetRecommendedProducts(id, limit);
+
+            List<CopurchasePrediction2> responseList = new List<CopurchasePrediction2>();
+            foreach (var responseItem in response)
+            {
+                CopurchasePrediction2 copurchasePrediction2 = new CopurchasePrediction2();
+                copurchasePrediction2.Id = responseItem.CoProductId;
+                copurchasePrediction2.Score = responseItem.Score;
+                responseList.Add(copurchasePrediction2);
+            }
+
+            return responseList;
         }
+
 
         [HttpGet]
         public async Task<ProductCoPurchase?> GetById(int id)
